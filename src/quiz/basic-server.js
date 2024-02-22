@@ -41,10 +41,14 @@ const server = http.createServer((req, res) => {
         // Check if all parameters are provided
         if (road && location && direction && id) {
             // Send response with the extracted parameters
-            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.writeHead(200, { 'Content-Type': 'application/json' }); // 200 means its a valid response
             res.end(JSON.stringify(incidents.filter((incident) => {
                 return incident.id === `MABOS00${id}`
             })));
+        } else {
+            // If any parameter is missing, send a bad request response
+            res.writeHead(400, { 'Content-Type': 'text/plain' });
+            res.end('Missing parameters in the request URL');
         }
     } else {
         // If the request is for an unsupported endpoint, send a not found response
