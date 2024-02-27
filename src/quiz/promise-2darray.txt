@@ -1,1 +1,4 @@
 Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+
+I think that it's going through both sumPromise1 and sumPromise2 before providing the final sum. sumPromise2 should return 
+the bad input message because we're passing in a string rather than an array. 
